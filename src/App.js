@@ -1,6 +1,7 @@
 // App.js — This is the ROOT COMPONENT of the app.
 // It sets up all the routes (pages) using React Router.
 // Think of this as the map of the entire application.
+// Updated for Vercel deployment
 
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
