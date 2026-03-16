@@ -24,6 +24,15 @@ const api = axios.create({
 // Example usage: fetchFromAPI('search?part=snippet&q=Coding')
 // It adds the url after the baseURL and returns the response data.
 export const fetchFromAPI = async (url) => {
-  const { data } = await api.get(`/${url}`);
-  return data; // return just the data part of the response (not headers, status, etc.)
+  try {
+    console.log('🔍 API Request:', `https://youtube-v31.p.rapidapi.com/${url}`);
+    console.log('🔑 API Key:', process.env.REACT_APP_RAPID_API_KEY ? 'Found' : 'Missing');
+    
+    const { data } = await api.get(`/${url}`);
+    console.log('✅ API Response:', data);
+    return data;
+  } catch (error) {
+    console.error('❌ API Error:', error.response?.data || error.message);
+    throw error;
+  }
 };

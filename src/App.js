@@ -14,7 +14,8 @@ import Feed from './pages/Feed';               // home page "/"
 import VideoDetails from './pages/VideoDetails'; // video page "/video/:id"
 import ChannelDetails from './pages/ChannelDetails'; // channel page "/channel/:id"
 import SearchFeed from './pages/SearchFeed';   // search results "/search/:query"
-import ApiTest from './components/ApiTest';     // temporary API test
+import EnvDebug from './components/EnvDebug';   // temporary debug
+import ApiKeyTest from './components/ApiKeyTest'; // API test
 
 import './App.css'; // all the styles for every component and page
 
@@ -26,8 +27,9 @@ function App() {
       {/* Navbar is OUTSIDE <Routes> so it always shows on every page */}
       <Navbar />
       
-      {/* Temporary API test - remove after debugging */}
-      <ApiTest />
+      {/* Debug component - remove after fixing */}
+      <EnvDebug />
+      <ApiKeyTest />
 
       {/* Routes looks at the current URL and renders the matching page */}
       <Routes>
