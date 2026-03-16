@@ -4,10 +4,11 @@
 // Updated for Vercel deployment
 
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 
 // Import the Navbar component — shown on every page
 import Navbar from './components/Navbar';
+import ErrorBoundary from './components/ErrorBoundary';
 
 // Import all 4 pages — each one is tied to a URL route
 import Feed from './pages/Feed';               // home page "/"
@@ -19,8 +20,9 @@ import './App.css'; // all the styles for every component and page
 
 function App() {
   return (
-    // BrowserRouter enables client-side navigation (no full page reloads)
-    <BrowserRouter>
+    <ErrorBoundary>
+      {/* HashRouter works better with GitHub Pages (uses # in URLs) */}
+      <HashRouter>
 
       {/* Navbar is OUTSIDE <Routes> so it always shows on every page */}
       <Navbar />
@@ -40,7 +42,8 @@ function App() {
         <Route path="/search/:query" element={<SearchFeed />} />
       </Routes>
 
-    </BrowserRouter>
+      </HashRouter>
+    </ErrorBoundary>
   );
 }
 
