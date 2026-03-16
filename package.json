@@ -2,6 +2,7 @@
   "name": "work-of-video-platform",
   "version": "1.0.0",
   "private": true,
+  "homepage": "https://lydieuwayezu.github.io/modern-video-platform",
   "dependencies": {
     "@tanstack/react-query": "^5.90.21",
     "axios": "^1.13.6",
