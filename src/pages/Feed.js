@@ -13,22 +13,25 @@ import ChannelCard from '../components/ChannelCard';
 import Loader from '../components/Loader';
 
 function Feed() {
-  // selectedCategory: the current category being searched (e.g. "Coding", "Music")
-  // Default is "Coding" so the app loads coding videos on first visit
-  const [selectedCategory, setSelectedCategory] = useState('Coding');
+  // selectedCategory: the current category being searched (e.g. "Popular", "Music")
+  // Default is "Popular" so the app loads popular videos on first visit
+  const [selectedCategory, setSelectedCategory] = useState('Popular');
 
   // activePill: tracks which filter pill button is highlighted
   const [activePill, setActivePill] = useState('All');
 
   // useQuery fetches data from the API and caches it automatically.
-  // queryKey: ['feed', selectedCategory] — a unique name for this cached data.
-  //   When selectedCategory changes (e.g. from "Coding" to "Music"),
-  //   the key changes, so TanStack Query fetches new data for that category.
-  //   If you come back to "Coding" within 5 minutes, it uses the cached data — no new API call.
-  // queryFn: the function that actually calls the API
+  // For popular videos, we use a different API endpoint that gets trending content
   const { data, isLoading, isError } = useQuery({
     queryKey: ['feed', selectedCategory],
-    queryFn: () => fetchFromAPI(`search?part=snippet&q=${selectedCategory}&type=video,channel&maxResults=20`),
+    queryFn: () => {
+      // If "Popular" is selected, fetch trending videos instead of search results
+      if (selectedCategory === 'Popular') {
+        return fetchFromAPI('videos?part=snippet,statistics&chart=mostPopular&regionCode=US&maxResults=20');
+      }
+      // For other categories, use the regular search
+      return fetchFromAPI(`search?part=snippet&q=${selectedCategory}&type=video,channel&maxResults=20`);
+    },
   });
 
   // The API returns an "items" array — default to empty array if data hasn't loaded yet
