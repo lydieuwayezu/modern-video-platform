@@ -1,3 +1,5 @@
+// ErrorBoundary.js — Catches any JavaScript crash in the app and shows a friendly error message.
+
 import React from 'react';
 
 class ErrorBoundary extends React.Component {

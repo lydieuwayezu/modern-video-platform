@@ -1,61 +1,40 @@
-// Feed.js — The HOME PAGE of the app (route: "/").
-// It shows the Sidebar on the left, filter pills at the top,
-// and a grid of VideoCard and ChannelCard components below.
-// When the user clicks a category or pill, it fetches new videos from the API.
-
 import React, { useState } from 'react';
-import { useQuery } from '@tanstack/react-query'; // for fetching + caching API data
-import { fetchFromAPI } from '../utils/fetchFromAPI'; // our Axios API utility
-import { filterPills } from '../utils/constants'; // horizontal filter buttons data
+import { useQuery } from '@tanstack/react-query';
+import { fetchFromAPI } from '../utils/fetchFromAPI';
+import { filterPills } from '../utils/constants';
 import Sidebar from '../components/Sidebar';
 import VideoCard from '../components/VideoCard';
 import ChannelCard from '../components/ChannelCard';
 import Loader from '../components/Loader';
 
 function Feed() {
-  // selectedCategory: the current category being searched (e.g. "Popular", "Music")
-  // Default is "Popular" so the app loads popular videos on first visit
   const [selectedCategory, setSelectedCategory] = useState('Popular');
-
-  // activePill: tracks which filter pill button is highlighted
   const [activePill, setActivePill] = useState('All');
 
-  // useQuery fetches data from the API and caches it automatically.
-  // For popular videos, we use a different API endpoint that gets trending content
   const { data, isLoading, isError } = useQuery({
     queryKey: ['feed', selectedCategory],
     queryFn: () => {
-      // If "Popular" is selected, fetch trending videos instead of search results
       if (selectedCategory === 'Popular') {
         return fetchFromAPI('videos?part=snippet,statistics&chart=mostPopular&regionCode=US&maxResults=20');
       }
-      // For other categories, use the regular search
       return fetchFromAPI(`search?part=snippet&q=${selectedCategory}&type=video,channel&maxResults=20`);
     },
   });
 
-  // The API returns an "items" array — default to empty array if data hasn't loaded yet
   const items = data?.items || [];
 
   return (
     <div className="main-layout">
-
-      {/* Sidebar: pass the current category and a function to update it */}
-      {/* When user clicks a category in Sidebar, setSelectedCategory is called */}
       <Sidebar selectedCategory={selectedCategory} onSelect={setSelectedCategory} />
 
       <div className="feed-container">
-
-        {/* Filter Pills — horizontal scrollable buttons at the top */}
         <div className="filter-pills">
           {filterPills.map((pill) => (
             <button
               key={pill}
-              // Highlight the active pill with the "active" CSS class
               className={`pill ${activePill === pill ? 'active' : ''}`}
               onClick={() => {
-                setActivePill(pill); // highlight this pill
-                // "All" doesn't map to a specific category, so skip the fetch update
+                setActivePill(pill);
                 if (pill !== 'All') setSelectedCategory(pill);
               }}
             >
@@ -64,10 +43,8 @@ function Feed() {
           ))}
         </div>
 
-        {/* Show spinner while the API request is in progress */}
         {isLoading && <Loader />}
 
-        {/* Show error message if the API call failed (e.g. rate limit, bad key) */}
         {isError && (
           <div className="error-msg">
             <h3>Something went wrong</h3>
@@ -75,19 +52,15 @@ function Feed() {
           </div>
         )}
 
-        {/* Show the video grid only when data has loaded successfully */}
         {!isLoading && !isError && (
           <div className="video-grid">
             {items.map((item, idx) =>
-              // The API can return both videos and channels in the same response.
-              // Check the "kind" field to decide which card component to render.
               item.id?.kind === 'youtube#channel'
-                ? <ChannelCard key={idx} channel={item} />  // render channel card
-                : <VideoCard key={idx} video={item} />       // render video card
+                ? <ChannelCard key={idx} channel={item} />
+                : <VideoCard key={idx} video={item} />
             )}
           </div>
         )}
-
       </div>
     </div>
   );

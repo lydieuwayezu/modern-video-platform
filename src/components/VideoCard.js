@@ -3,6 +3,8 @@
 // Clicking the card navigates to the video page.
 // Clicking the channel name navigates to the channel page.
 
+// VideoCard.js — Reusable card showing video thumbnail, title, channel and views. Used in Feed, VideoDetails and ChannelDetails.
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 

@@ -3,6 +3,8 @@
 //   - selectedCategory: the currently active category (highlighted in white)
 //   - onSelect: a function to call when the user clicks a category
 
+// Sidebar.js — Left menu listing all video categories. Highlights the active one.
+
 import React from 'react';
 import { categories } from '../utils/constants'; // import the list of categories
 

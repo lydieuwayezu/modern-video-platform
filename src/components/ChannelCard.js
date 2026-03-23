@@ -3,6 +3,8 @@
 // Used in search results when the result is a channel (not a video).
 // Clicking it navigates to the channel's profile page.
 
+// ChannelCard.js — Card showing a channel avatar, name and subscriber count. Used in search results.
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 

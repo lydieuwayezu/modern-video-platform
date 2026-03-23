@@ -2,6 +2,8 @@
 // It appears on EVERY page because it is placed outside <Routes> in App.js.
 // It contains the YouTube logo (links back to home) and the SearchBar.
 
+// Navbar.js — Sticky top bar showing the YouTube logo and search input on every page.
+
 import React from 'react';
 import { Link } from 'react-router-dom'; // Link navigates without reloading the page
 import { AiFillYoutube } from 'react-icons/ai'; // YouTube logo icon from react-icons
