@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/modern-video-platform/static/css/main.8328bbc6.css",
+    "main.js": "/modern-video-platform/static/js/main.bcc6eca9.js",
+    "reactPlayerPreview.js": "/modern-video-platform/static/js/reactPlayerPreview.d90b155c.chunk.js",
+    "index.html": "/modern-video-platform/index.html",
+    "main.8328bbc6.css.map": "/modern-video-platform/static/css/main.8328bbc6.css.map",
+    "main.bcc6eca9.js.map": "/modern-video-platform/static/js/main.bcc6eca9.js.map",
+    "reactPlayerPreview.d90b155c.chunk.js.map": "/modern-video-platform/static/js/reactPlayerPreview.d90b155c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8328bbc6.css",
+    "static/js/main.bcc6eca9.js"
+  ]
+}
