@@ -1,8 +1,3 @@
-// Loader.js — A simple loading spinner component.
-// It is shown whenever an API request is still in progress (isLoading is true).
-// Once the data arrives or an error occurs, this component disappears.
-// The spinning animation is done purely with CSS in App.css.
-
 // Loader.js — Red spinning circle shown while any API request is in progress.
 
 import React from 'react';

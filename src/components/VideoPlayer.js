@@ -1,7 +1,3 @@
-// VideoPlayer.js — The component that actually plays the video.
-// It receives a videoId prop from VideoDetails.js and embeds the YouTube video.
-// It also has a custom fullscreen button using the browser's Fullscreen API.
-
 // VideoPlayer.js — Embeds a YouTube video using ReactPlayer with a custom fullscreen button.
 
 import React, { useRef } from 'react';

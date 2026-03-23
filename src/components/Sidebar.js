@@ -1,8 +1,3 @@
-// Sidebar.js — The left vertical menu showing all video categories.
-// It receives two props from Feed.js:
-//   - selectedCategory: the currently active category (highlighted in white)
-//   - onSelect: a function to call when the user clicks a category
-
 // Sidebar.js — Left menu listing all video categories. Highlights the active one.
 
 import React from 'react';

@@ -1,7 +1,3 @@
-  // SearchBar.js — The search input field inside the Navbar.
-// When the user types something and presses Enter or clicks the button,
-// it navigates to "/search/their query" which loads the SearchFeed page.
-
 // SearchBar.js — Search input inside the Navbar. Navigates to /search/:query on submit.
 
 import React, { useState } from 'react';

@@ -1,8 +1,3 @@
-// VideoCard.js — A reusable card that displays one video.
-// It is used in 3 places: Feed, VideoDetails sidebar, and ChannelDetails.
-// Clicking the card navigates to the video page.
-// Clicking the channel name navigates to the channel page.
-
 // VideoCard.js — Reusable card showing video thumbnail, title, channel and views. Used in Feed, VideoDetails and ChannelDetails.
 
 import React from 'react';
